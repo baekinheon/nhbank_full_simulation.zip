@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NH농협 스마트뱅킹</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f6f7f9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      background: white;
+      min-height: 100vh;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 1px solid #ddd;
+    }
+    .header .left {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+    }
+    .header .left .bank {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .header .right {
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
+    }
+    .button-row {
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .button {
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+    }
+    .button.primary {
+      background: #00a89c;
+      color: white;
+      border: none;
+    }
+    .filters {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #333;
+    }
+    .filters .left {
+      display: flex;
+      gap: 4px;
+    }
+    .filters .right {
+      display: flex;
+      align-items: center;
+    }
+    .toggle {
+      width: 36px;
+      height: 20px;
+      background: #00a89c;
+      border-radius: 10px;
+      position: relative;
+    }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 2px;
+      left: 2px;
+      background: white;
+      border-radius: 50%;
+    }
+    .transaction {
+      padding: 14px 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .transaction .date {
+      font-size: 12px;
+      color: #888;
+    }
+    .transaction .title {
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+    .transaction .amount {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: right;
+    }
+    .amount.income {
+      color: #00a859;
+    }
+    .amount.expense {
+      color: #000;
+    }
+    .transaction-footer {
+      font-size: 12px;
+      color: #999;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="left">
+        <div class="bank">채움스마트통장</div>
+        <div>NH농협은행 312-8992-7347-11</div>
+      </div>
+      <div class="right">잔액 47,853,000원</div>
+    </div>
+    <div class="button-row">
+      <div class="button">계좌 관리</div>
+      <div class="button primary">이체</div>
+    </div>
+    <div class="filters">
+      <div class="left">1개월 · 전체 · 최신순 (총 50건)</div>
+      <div class="right">
+        잔액
+        <div class="toggle"></div>
+      </div>
+    </div>
+
+    <div class="transaction">
+      <div class="date">2025.07.25 09:30</div>
+      <div class="title">현대자동차(주)</div>
+      <div class="amount income">+4,194,320원</div>
+      <div class="transaction-footer">잔액 47,853,000원</div>
+    </div>
+    <div class="transaction">
+      <div class="date">2025.07.24 15:10</div>
+      <div class="title">카카오페이증권</div>
+      <div class="amount expense">-15,000원</div>
+      <div class="transaction-footer">잔액 43,658,680원</div>
+    </div>
+    <div class="transaction">
+      <div class="date">2025.07.22 11:05</div>
+      <div class="title">(주)편의점</div>
+      <div class="amount expense">-5,200원</div>
+      <div class="transaction-footer">잔액 43,673,880원</div>
+    </div>
+    <div class="transaction">
+      <div class="date">2025.07.19 10:22</div>
+      <div class="title">BGF리테일</div>
+      <div class="amount expense">-6,400원</div>
+      <div class="transaction-footer">잔액 43,706,380원</div>
+    </div>
+  
+    <div class="transaction">
+      <div class="date">2025.07.18 21:01</div>
+      <div class="title">스타벅스</div>
+      <div class="amount expense">-4,900원</div>
+      <div class="transaction-footer">잔액 43,712,780원</div>
+    </div>
+    <div class="transaction">
+      <div class="date">2025.07.18 17:42</div>
+      <div class="title">CU편의점</div>
+      <div class="amount expense">-2,300원</div>
+      <div class="transaction-footer">잔액 43,717,680원</div>
+    </div>
+    <div class="transaction">
+      <div class="date">2025.07.18 09:30</div>
+      <div class="title">GS25</div>
+      <div class="amount expense">-3,100원</div>
+      <div class="transaction-footer">잔액 43,719,980원</div>
+    </div>
+    <div class="transaction">
+      <div class="date">2025.07.17 20:21</div>
+      <div class="title">이디야커피</div>
+      <div class="amount expense">-4,500원</div>
+      <div class="transaction-footer">잔액 43,723,080원</div>
+    </div>
+    <div class="transaction">
+      <div class="date">2025.07.17 14:00</div>
+      <div class="title">카카오페이</div>
+      <div class="amount expense">-30,000원</div>
+      <div class="transaction-footer">잔액 43,727,580원</div>
+    </div>
+    <div class="transaction">
+      <div class="date">2025.07.17 10:45</div>
+      <div class="title">배달의민족</div>
+      <div class="amount expense">-17,800원</div>
+      <div class="transaction-footer">잔액 43,757,580원</div>
+    </div>
+
+  </div>
+</body>
+</html>

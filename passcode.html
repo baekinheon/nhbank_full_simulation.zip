@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>간편비밀번호 입력</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background-color: #f2f3f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+    }
+    h2 {
+      margin-top: 80px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .dots {
+      display: flex;
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid #999;
+      background-color: white;
+    }
+    .dot.filled {
+      background-color: black;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 240px;
+    }
+    .key {
+      font-size: 20px;
+      padding: 18px 0;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .key:active {
+      background-color: #e1f4f3;
+    }
+    .footer {
+      margin-bottom: 32px;
+      font-size: 13px;
+      color: #555;
+    }
+    .shake {
+      animation: shake 0.3s;
+    }
+    @keyframes shake {
+      0% { transform: translateX(-10px); }
+      25% { transform: translateX(10px); }
+      50% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <h2>간편비밀번호 입력</h2>
+  <div class="dots" id="dots">
+    <div class="dot" id="dot0"></div>
+    <div class="dot" id="dot1"></div>
+    <div class="dot" id="dot2"></div>
+    <div class="dot" id="dot3"></div>
+    <div class="dot" id="dot4"></div>
+    <div class="dot" id="dot5"></div>
+  </div>
+  <div class="keypad" id="keypad">
+    <div class="key">1</div>
+    <div class="key">2</div>
+    <div class="key">3</div>
+    <div class="key">4</div>
+    <div class="key">5</div>
+    <div class="key">6</div>
+    <div class="key">7</div>
+    <div class="key">8</div>
+    <div class="key">9</div>
+    <div class="key">←</div>
+    <div class="key">0</div>
+    <div class="key">지움</div>
+  </div>
+  <div class="footer">비밀번호 재설정 | 지문 로그인</div>
+
+  <script>
+    const correctPasscode = "021850";
+    let input = "";
+
+    const dots = document.querySelectorAll(".dot");
+    const keypad = document.getElementById("keypad");
+
+    function updateDots() {
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("filled", idx < input.length);
+      });
+    }
+
+    function resetInput(withShake = false) {
+      input = "";
+      updateDots();
+      if (withShake) {
+        const dotContainer = document.getElementById("dots");
+        dotContainer.classList.add("shake");
+        setTimeout(() => dotContainer.classList.remove("shake"), 300);
+      }
+    }
+
+    keypad.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("key")) return;
+      const value = e.target.textContent;
+
+      if (value === "←") {
+        input = input.slice(0, -1);
+      } else if (value === "지움") {
+        input = "";
+      } else if (input.length < 6 && /^[0-9]$/.test(value)) {
+        input += value;
+      }
+
+      updateDots();
+
+      if (input.length === 6) {
+        if (input === correctPasscode) {
+          window.location.href = "nhbank_home_linked.html";
+        } else {
+          resetInput(true);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
